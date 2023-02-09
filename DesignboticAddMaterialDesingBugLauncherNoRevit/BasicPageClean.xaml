@@ -1,0 +1,66 @@
+﻿<Page x:Class="DesignboticAddMaterialDesingBugLauncher.BasicPageClean"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BasicPageClean">
+
+    <Page.Resources>
+        <ResourceDictionary Source="pack://application:,,,/DesignboticAddMaterialDesingBugLauncherNoRevit;component/Resources.xaml" />
+    </Page.Resources>
+<!--
+    <Page.Resources>
+        <ResourceDictionary>
+            
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ColorPicker.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Grey.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Page.Resources>
+-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <DockPanel>
+
+            <DataGrid Grid.Row="0" AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                HeadersVisibility="All"
+                ItemsSource="{Binding DummyObjects}" 
+                  VerticalAlignment="Stretch"
+                  SelectionMode="Single"
+                  materialDesign:ScrollBarAssist.ButtonsVisibility="Hidden"
+                  >
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Width="100"                                   
+                    Binding="{Binding Name}"
+                              EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                              ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                              Header="Name" />
+                    <materialDesign:DataGridComboBoxColumn Width="180"
+                                                 Header="Combobox"
+                                                 IsEditable="True"
+
+                                                 SelectedValueBinding="{Binding SelectedComboBoxOptions}" 
+                                                 ItemsSourceBinding="{Binding ComboBoxOptions}"
+
+                    />
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</Page>
