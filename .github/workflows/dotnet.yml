@@ -21,6 +21,8 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
       env: 
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+    - name: AddNugetFeed
+      run: nuget add source --username KonradZaremba --password ${{ secrets.NUGETREAD }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/designbotic/index.json"
     - name: Restore
       run: nuget restore DesignboticAddMaterialDesingBugLauncherNoRevit/DesignboticAddMaterialDesingBugLauncherNoRevit.csproj
     - name: Build
